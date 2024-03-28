@@ -24,7 +24,7 @@ const LoginController = async(req: Request, res: Response) => {
         if (!user) {
             console.log("\n\t user error: ",)
             return res.status(400).json({
-                status: "Error",
+                status: false,
                 message: "Invalid user credentials"
             });
         };

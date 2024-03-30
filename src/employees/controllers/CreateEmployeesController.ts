@@ -9,9 +9,9 @@ import { generateLoggedInUserIdFromRequest, logUserActivity } from "../../utilit
 import { todaysDate } from "date-fran";
 
 
-const CreateEmployeeController = async(req: Request, res: Response) => {
-    // #swagger.tags = ['Employee Management']
-    console.log("\n\t CreateEmployeeController...", req.body)
+const CreateEmployeesController = async(req: Request, res: Response) => {
+    // #swagger.tags = ['Employees Management']
+    // console.log("\n\t CreateEmployeesController...", req.body)
     const adminUser = req.user;
     let statusCode = 403;
     try {
@@ -68,4 +68,4 @@ const CreateEmployeeController = async(req: Request, res: Response) => {
 };
 
 
-export default CreateEmployeeController;
+export default CreateEmployeesController;

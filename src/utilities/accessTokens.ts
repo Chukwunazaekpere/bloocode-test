@@ -2,14 +2,14 @@ import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 
-dotenv.config({path: "./src/config/config.env"})
+dotenv.config({path: "./src/config/.env"})
 
-const HOSPYTA_ADMIN_SECRET = process.env.HOSPYTA_ADMIN_SECRET as string;
+const TEST_ADMIN_SECRET = process.env.TEST_ADMIN_SECRET as string;
 
 export const generateAccessToken = async(payload: any) => {
     try {
-        console.log("\n\t JWT in accessTokens file: ", HOSPYTA_ADMIN_SECRET)
-        let accessToken = jwt.sign(payload, HOSPYTA_ADMIN_SECRET, {
+        console.log("\n\t JWT in accessTokens file: ", TEST_ADMIN_SECRET)
+        let accessToken = jwt.sign(payload, TEST_ADMIN_SECRET, {
             expiresIn: "1d",
         });
         return accessToken;

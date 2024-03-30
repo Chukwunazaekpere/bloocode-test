@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import usersModels from "../users/models";
 const { Users } = usersModels;
 
-dotenv.config({path: "./src/config/config.env"})
+dotenv.config({path: "./src/config/.env"})
 const TEST_ADMIN_SECRET = process.env.TEST_ADMIN_SECRET as string;
 
 export const authenticate = async(req: Request, res: Response, next: NextFunction) => {
@@ -29,12 +29,12 @@ export const authenticate = async(req: Request, res: Response, next: NextFunctio
             //decode the acesss token
             console.log("\n\t accessToken: ", accessToken)
             const actualAccessToken = accessToken.split(process.env.ACCESS_TOKEN_SPLIT_SECRET)[0]
-            console.log("\n\t Server-actualAccessToken: ", actualAccessToken);
+            // console.log("\n\t Server-actualAccessToken: ", actualAccessToken);
             const decodedToken = jwt.verify(actualAccessToken, TEST_ADMIN_SECRET) as jwt.JwtPayload;
-            console.log("\n\t Server-decodedToken: ", decodedToken);
+            // console.log("\n\t Server-decodedToken: ", decodedToken);
             //check if user exist   just to be sure the user had not been deleted
             const user = await Users.findById(decodedToken.user.id);
-            console.log("\n\t authenticate middlewware-user: ", user);
+            // console.log("\n\t authenticate middlewware-user: ", user);
             errorMessage = `Acesss denied, Users with the token might have been deleted or deactivated`
             if(user){
                 req.user = {}as any;

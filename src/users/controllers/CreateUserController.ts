@@ -6,6 +6,7 @@ const { Users } = usersModels;
 
 import { generateLoggedInUserIdFromRequest, logUserActivity } from "../../utilities/userActivities";
 import { todaysDate } from "date-fran";
+import { UserTypeEnum } from "../models/Users";
 
 
 const CreateUserController = async(req: Request, res: Response) => {
@@ -34,7 +35,8 @@ const CreateUserController = async(req: Request, res: Response) => {
                     statusCode = 0;
                     await Promise.all([
                         Users.create({
-                            ...req.body,
+                            // ...req.body,
+                            usersRole: role,
                             createdBy: authorizedUsersId,
                             updatedBy: authorizedUsersId,
                             lastSeen: todaysDate(),
@@ -45,7 +47,7 @@ const CreateUserController = async(req: Request, res: Response) => {
                             password: hashedPassword,
                             dateCreated: todaysDate(), 
                             dateUpdated: todaysDate(),
-                            userType: role,
+                            userType: UserTypeEnum.INT,
                         }),
                         logUserActivity(adminUser, `User management: Registered a new user: ${firstname} ${lastname}`, req)
                     ]);

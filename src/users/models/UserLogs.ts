@@ -3,7 +3,6 @@ import mongoose, { Model } from "mongoose";
 import { randomIdGenerator } from "../../utilities/userActivities";
 
 interface UserLogInterface {
-    userName: string
     userFullname: string
     logId: string
     stringDate: string
@@ -20,11 +19,6 @@ interface UsersLogMethods extends Model<UserLogInterface> {
 };
 
 const UserLogSchema = new mongoose.Schema<UserLogInterface>({
-    userName: {
-        type: String,
-        required: true,
-        index: true,
-    },
     userFullname: {
         type: String,
         index: true,

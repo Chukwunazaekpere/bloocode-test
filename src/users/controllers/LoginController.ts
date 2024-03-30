@@ -39,7 +39,7 @@ const LoginController = async(req: Request, res: Response) => {
         // };
         if (!(await decryptPassword(password, user.password))) {
             return res.status(403).json({
-                status: "Error",
+                status: false,
                 message: "Invalid user credentials"
             });
         };
@@ -48,9 +48,9 @@ const LoginController = async(req: Request, res: Response) => {
                 id: user.id,
             },
         };
-        const accessToken = await generateAccessToken(payLoad)
+        const accessToken = await generateAccessToken(payLoad);
         
-        // console.log("\n\t Lic Details: ", licenseDetails)
+        console.log("\n\t Lic accessToken: ", accessToken)
         await Promise.all([
             Users.findByIdAndUpdate(user._id, {
                 lastSeen: todaysDate(),

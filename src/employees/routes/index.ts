@@ -9,6 +9,7 @@ employeeManagementRouter.use(isLoggedIn);
 
 employeeManagementRouter.get("/get-employee-by-id/:id",  employeeManagementControllers.GetEmployeeByIdController);
 employeeManagementRouter.post("/search",  employeeManagementControllers.FilterEmployeesController);
+employeeManagementRouter.post("/create",  employeeManagementControllers.CreateEmployeesController);
 employeeManagementRouter.get("/get-employee/:start/:end",  employeeManagementControllers.AllEmployeesController);
 
 employeeManagementRouter.put("/update-employee-status/:employeeId",  employeeManagementControllers.UpdateEmployeesController);
